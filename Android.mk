@@ -248,9 +248,11 @@ LOCAL_REQUIRED_MODULES += \
 endif  # SELINUX_IGNORE_NEVERALLOWS
 endif  # with_asan
 
-ifeq ($(RELEASE_BOARD_API_LEVEL_FROZEN),true)
+ifeq ($(BOARD_API_LEVEL_FROZEN),true)
+ifeq ($(PLATFORM_SEPOLICY_VERSION_TEST),true)
 LOCAL_REQUIRED_MODULES += \
     se_freeze_test
+endif # ($(PLATFORM_SEPOLICY_VERSION_TEST),true)
 endif
 
 include $(BUILD_PHONY_PACKAGE)
