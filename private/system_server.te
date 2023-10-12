@@ -1670,10 +1670,5 @@ allow system_server {
 neverallow { domain -init -system_server } crashrecovery_prop:property_service set;
 neverallow { domain -init -dumpstate -system_server } crashrecovery_prop:file no_rw_file_perms;
 
-neverallow {
-  domain
-  -init
-  -vendor_init
-  -system_server
-  -shell
-} power_debug_prop:property_service set;
+# Allow system_server to read wifi_hal_prop
+get_prop(system_server, wifi_hal_prop)
